@@ -21,6 +21,10 @@ client.on("message", function (message) {
     }
     if(message.content.toLowerCase().startsWith(prefix + "backup")) {
     message.author.send(`Keep this key safe this is how you retrieve your server data: '${message.author.id + message.guild.id}'`)
+    console.log(message.guild.channels)
+    console.log(message.guild.roles)
+    console.log(message.guild.iconURL)
+    console.log(message.guild.name)
     } else
     if (message.content.toLowerCase().startsWith(prefix + "help")) {
         message.reply(":white_check_mark: I have sent a list of commands to you check your DM's :white_check_mark:")
