@@ -43,6 +43,7 @@ client.on("message", function (message) {
           .setAuthor(message.author.username,message.author.iconURL)
           .setColor("RANDOM")
           .setDescription("Command not finished")
+          .addField("Retriever Id", args)
           .setFooter(message.author.username)   
     }
     
