@@ -19,6 +19,21 @@ client.on("message", function (message) {
     if(message.content.toLowerCase().startsWith(prefix + "say")) {
     message.channel.send(args.join(" "))
     }
+    if(message.content.toLowerCase().startsWith(prefix + "backup")) {
+    message.author.send(`Keep this key safe this is how you retrieve your server data: '${message.author.id + message.guild.id}'`)
+    } else
+    if (message.content.toLowerCase().startsWith(prefix + "help")) {
+        message.reply(":white_check_mark: I have sent a list of commands to you check your DM's :white_check_mark:")
+        message.author.send()
+        var embed = new Discord.RichEmbed()
+          .setColor("RANDOM")
+          .setFooter("More Commands Coming Send me Ideas at Dawn#066 or Setting#1337")
+          .setTitle("Commands")
+          .addField("Prefix", prefix)
+          .addField("Commands", "backup,ping,say")
+          .addField("Notes", "None")
+        message.author.sendEmbed(embed);
+      }
 });
 
 client.login(token)
