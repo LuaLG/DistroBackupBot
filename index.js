@@ -37,7 +37,15 @@ client.on("message", function (message) {
           .addField("Commands", "backup,ping,say")
           .addField("Notes", "None")
         message.author.sendEmbed(embed);
-      }
+    } else
+    if(message.content.toLowerCase().startsWith(prefix + "retrieve")) {
+        var embed = new Discord.RichEmbed()
+          .setAuthor(message.author.username,message.author.iconURL)
+          .setColor("RANDOM")
+          .setDescription("Command not finished")
+          .setFooter(message.author.username)   
+    }
+    
 });
 
 client.login(token)
