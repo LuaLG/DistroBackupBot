@@ -1,2 +1,2 @@
-# DistroBackupBot
-Distro is a backup server bot!! aaa
+# Distro
+Distro is a backup server bot for Discord! Created by Settings and Dawn!
