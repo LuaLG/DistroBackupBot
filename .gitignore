@@ -1,0 +1,4 @@
+#directories
+./node_modules/
+#singular files
+./config.json
