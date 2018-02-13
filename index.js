@@ -28,9 +28,18 @@ client.on("message", function (message) {
         message.channel.send(args.join(" "))
     }
     if (message.content.toLowerCase().startsWith(prefix + "backup")) {
-        if (message.guild.id != message.author.id) return message.reply("You need to be the server owner to backup the server")
-        message.author.send(`Keep this key safe this is how you retrieve your server data: \`${message.author.id + message.guild.id}\``)
+        if (message.guild.owner.id != message.author.id) return message.reply("You need to be the server owner to backup the server")
+        message.author.send(`Keep this key safe this is how you retrieve your server data: \`${message.author.id}\``)
         console.log(message.guild.channels)
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+            var sql = `CREATE TABLE ${message.author.id}(name VARCHAR(255), address VARCHAR(255))`;
+            con.query(sql, function (err, result) {
+              if (err) throw err;
+              console.log("Table created");
+            });
+          });
         console.log(message.guild.roles)
         console.log(message.guild.iconURL)
         console.log(message.guild.name)
@@ -57,7 +66,7 @@ client.on("message", function (message) {
             .addField("Retriever Id", args)
             .setFooter(message.author.username)
     } else
-    if (message.content.toLowerCase().startsWith(Prefix + "serverinfo")) {
+    if (message.content.toLowerCase().startsWith(prefix + "serverinfo")) {
         var embed = new Discord.RichEmbed()
             .setAuthor(message.guild.name, message.guild.iconURL)
             .setColor("RANDOM")
@@ -73,7 +82,7 @@ client.on("message", function (message) {
 
         message.channel.sendEmbed(embed)
     } else
-    if (message.content.toLowerCase().startsWith(Prefix + "userinfo")) {
+    if (message.content.toLowerCase().startsWith(prefix + "userinfo")) {
         var mtarget = message.guild.member(message.mentions.users.first())
         var target = message.mentions.users.first()
         if (target) {
