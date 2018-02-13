@@ -31,6 +31,15 @@ client.on("message", function (message) {
         if (message.guild.owner.id != message.author.id) return message.reply("You need to be the server owner to backup the server")
         message.author.send(`Keep this key safe this is how you retrieve your server data: \`${message.author.id}\``)
         console.log(message.guild.channels)
+        con.connect(function(err) {
+            if (err) throw err;
+            console.log("Connected!");
+            var sql = `CREATE TABLE ${message.author.id}(name VARCHAR(255), address VARCHAR(255))`;
+            con.query(sql, function (err, result) {
+              if (err) throw err;
+              console.log("Table created");
+            });
+          });
         console.log(message.guild.roles)
         console.log(message.guild.iconURL)
         console.log(message.guild.name)
