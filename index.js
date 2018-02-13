@@ -1,10 +1,18 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const mysql = require("mysql");
 const client = new Discord.Client();
 const config = require("./config.json")
 const package = require("./package.json")
 const token = config.token //retrives token
 const prefix = config.prefix
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "username",
+  password: "password",
+  database: "Distro"
+});
 
 client.on("ready", function () { // Tells Console that it is ready to be ran!
     console.log("Distro is ready")
@@ -26,6 +34,7 @@ client.on("message", function (message) {
         console.log(message.guild.roles)
         console.log(message.guild.iconURL)
         console.log(message.guild.name)
+        //mysql method soon
     } else
     if (message.content.toLowerCase().startsWith(prefix + "help")) {
         message.reply(":white_check_mark: I have sent a list of commands to you check your DM's :white_check_mark:")
