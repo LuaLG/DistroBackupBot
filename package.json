@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AugustEymann/DistroBackupBot#readme",
   "dependencies": {
-    "discord.js": "^11.3.0"
+    "discord.js": "^11.3.0",
+    "mysql": "^2.15.0"
   }
 }
